@@ -30,13 +30,14 @@ h2 {
 
 p {
     margin: 0;
-    padding: 20px;
+    padding: 20px 0px;
 }
 
 img {
-    background-color: white;
+    /* background-color: white; */
     border-radius: 100%;
     border: 2px solid black;
+    filter: drop-shadow(1px 1px 1px black);
 }
 
 #forecast-today {
@@ -66,6 +67,10 @@ img {
     display: none;
 }
 
+.hourly-section {
+    margin: 0px 20px;
+}
+
 .flex {
     display: flex;
     justify-content: space-around;
@@ -88,7 +93,7 @@ img {
 
 .weather-section {
     width: 49%;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .weather-section-front {

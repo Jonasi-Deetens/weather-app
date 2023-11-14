@@ -63,6 +63,10 @@ async function generateWeatherForecast() {
     h1Element.textContent = geoData.name;
     currentForecastFrontElement.appendChild(h1Element);
 
+    const h2ElementDay = document.createElement("h2");
+    h2ElementDay.textContent = "Today";
+    currentForecastFrontElement.appendChild(h2ElementDay);
+
     const imgElement = document.createElement("img");
     if (weatherData.current.is_day) imgElement.src = currentWeather.day.image;
     else imgElement.src = currentWeather.night.image;
@@ -178,6 +182,7 @@ function createHourlyForecast(startIndex, day, weatherData) {
     forecastElement.classList.add("overflow");
     for (let index = startIndex + (24 * day); index < 24 * (day + 1); index++) {
         const hourlyCard = document.createElement("div");
+        hourlyCard.classList.add("hourly-section")
 
         const hourElement = document.createElement("p");
         hourElement.textContent = weatherData.hourly.time[index].split("T")[1];
