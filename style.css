@@ -18,8 +18,10 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-position: center;
+
     background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     background-image: url('./images/sky-day.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
