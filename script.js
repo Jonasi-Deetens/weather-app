@@ -17,6 +17,7 @@ async function fetchData() {
 
 function initApp() {
     addListeners();
+    fetchData();
 }
 
 function addListeners() {
@@ -30,7 +31,7 @@ function addListeners() {
 
 async function getGeoData() {
     const cityInput = document.querySelector("#cities-input");
-    const city = cityInput.value;
+    const city = "ghent";//cityInput.value;
 
     const response = await fetch(geoAPI + encodeURI(city));
     const data = await response.json();
