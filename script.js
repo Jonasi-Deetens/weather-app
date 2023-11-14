@@ -56,7 +56,6 @@ async function generateWeatherForecast() {
     const currentWeather = weatherDescriptions[weatherData.daily.weather_code[0]];
 
     //CREATE TITEL SECTION
-    
     const cityTitelElement = document.createElement("section");
     cityTitelElement.classList.add("weather-section-title");
 
