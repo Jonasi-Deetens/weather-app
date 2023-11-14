@@ -49,6 +49,7 @@ img {
 
 #cities-input {
     border: 2px solid black;
+    padding: 5px;
 }
 
 #forecast-today {
@@ -64,6 +65,18 @@ img {
     justify-content: space-between;
     width: 70%;
     margin: auto;
+}
+
+#get-weather-button {
+    border: 3px solid black;
+    padding: 5px;
+}
+
+#get-weather-button:hover {
+    border: 3px solid black;
+    padding: 5px;
+    background-color: black;
+    color: white;
 }
 
 #main-content {
