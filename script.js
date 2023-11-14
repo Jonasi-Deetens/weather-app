@@ -59,8 +59,8 @@ async function generateWeatherForecast() {
     currentForecastElement.addEventListener("click", showHourlyForecast);
     const currentWeather = weatherDescriptions[weatherData.daily.weather_code[0]];
 
-    if (weatherData.current.is_day) document.body.style.backgroundImage = "url(./sky.jpg)";
-    else document.body.style.backgroundImage = "url(./sky-night.jpg)";
+    if (weatherData.current.is_day) document.body.style.backgroundImage = "url(" + weatherDescriptions[weatherData.daily.weather_code[0]].day.background + ")";
+    else document.body.style.backgroundImage = "url(" +  weatherDescriptions[weatherData.daily.weather_code[0]].night.background + ")";
 
     //CREATE TITEL SECTION
     const cityTitelElement = document.createElement("section");
