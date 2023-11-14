@@ -20,12 +20,17 @@ function initApp() {
 }
 
 function addListeners() {
+    const cityInput = document.querySelector("#cities-input");
+    cityInput.addEventListener("keyup", (event) => {
+        if (event.code === "Enter") fetchData();
+    });
+
     const weatherButton = document.querySelector("#get-weather-button");
     weatherButton.addEventListener("click", fetchData);
 }
 
 async function getGeoData() {
-    const cityInput = document.querySelector("#cities-input")
+    const cityInput = document.querySelector("#cities-input");
     const city = cityInput.value;
 
     const response = await fetch(geoAPI + encodeURI(city));
