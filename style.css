@@ -1,11 +1,57 @@
+@font-face {
+    font-family: "Bangers";
+    src: url("./Bangers-Regular.ttf");
+  }
+
 * {
     box-sizing: border-box;
+    font-family: "Bangers";
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: rgba(145, 211, 211, 0.616);
+    text-align: center;
+    background-image: url('./sky.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 1.7em;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    margin: 0;
+    padding: 20px;
+}
+
+p {
+    margin: 0;
+    padding: 20px;
+}
+
+img {
+    background-color: white;
+    border-radius: 100%;
+    border: 2px solid black;
+}
+
+#forecast-today {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+#forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto;
 }
 
 #main-content {
@@ -13,5 +59,57 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    height: 95vh;
+}
+
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.forecast-section-back {
+    width: 100%;
+}
+
+.overflow {
+    overflow-x: scroll;
+    margin-left: 0;
+    margin: 10px;
+}
+
+.small {
+    width: 50px;
+    height: 50px;
+}
+
+.weather-section {
+    width: 49%;
+    margin-bottom: 20px;
+}
+
+.weather-section-front {
+    /* background-color: rgba(0, 0, 0, 0.85); */
+    background-color: rgba(228, 225, 225, 0.95);
+    color: black;
+    box-shadow: 0 0 5px black;
+    border: 3px solid black;
+    height: 370px;
+}
+
+.weather-section-back {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    box-shadow: 0 0 5px white;
+    border: 3px solid white;
+    height: 370px;
+}
+
+@media (max-width: 720px) {
+    .weather-section {
+        width: 100%;
+    }
 }

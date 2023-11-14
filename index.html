@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather-app</title>
     <link rel="stylesheet" href="./style.css">
-    <script defer src="./script.js"></script>
+    <script defer type="module" src="./script.js"></script>
 </head>
 <body>
     <header></header>
-    <main id="main-content">
-        <label for="cities-input">Choose a city:</label>
-        <select name="cities-input" id="cities-input">
-            <option value="heist">Heist</option>
-            <option value="brugge">Brugge</option>
-            <option value="gent">Gent</option>
-            <option value="brussel">Brussel</option>
-          </select>
-        <button id="get-weather-button">Get weather</button>
+    <main>
+        <section id="main-content">
+            <label for="cities-input">Choose a city:</label>
+            <br>
+            <select name="cities-input" id="cities-input">
+                <option value="heist">Heist</option>
+                <option value="brugge">Brugge</option>
+                <option value="gent">Gent</option>
+                <option value="brussel">Brussel</option>
+              </select>
+              <br>
+            <button id="get-weather-button">Get weather</button>
+        </section>
+        <section id="forecast-today"></section>
+        <section id="forecast"></section>
     </main>
     <footer></footer>
 </body>
