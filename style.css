@@ -22,7 +22,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('./images/sky-day.jpg');
+    background-image: url('./images/sky-day.webp');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -55,7 +55,7 @@ img {
 }
 
 #cities-input {
-    border: 2px solid black;
+    border: 3px solid black;
     padding: 5px;
 }
 
