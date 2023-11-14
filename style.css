@@ -1,7 +1,13 @@
 @font-face {
     font-family: "Bangers";
     src: url("./Bangers-Regular.ttf");
-  }
+}
+.overflow::-webkit-scrollbar {
+    height: 2px;
+}
+.overflow::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.7);
+}
 
 * {
     box-sizing: border-box;
