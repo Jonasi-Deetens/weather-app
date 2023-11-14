@@ -174,7 +174,8 @@ async function generateWeatherForecast() {
 
 function createHourlyForecast(startIndex, day, weatherData) {
     const forecastElement = document.createElement("div");
-    forecastElement.classList.add("flex", "overflow");
+    forecastElement.style.display = "flex";
+    forecastElement.classList.add("overflow");
     for (let index = startIndex + (24 * day); index < 24 * (day + 1); index++) {
         const hourlyCard = document.createElement("div");
 
