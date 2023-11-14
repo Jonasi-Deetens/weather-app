@@ -194,42 +194,49 @@ const weatherDescriptions = {
 	"71":{
 		"day":{
 			"description":"Light Snow",
-			"image":"http://openweathermap.org/img/wn/13d@2x.png"
+			"image":"http://openweathermap.org/img/wn/13d@2x.png",
+            "background":"./images/sky-snowy-day.jpg"
 		},
 		"night":{
 			"description":"Light Snow",
-			"image":"http://openweathermap.org/img/wn/13n@2x.png"
+			"image":"http://openweathermap.org/img/wn/13n@2x.png",
+            "background":"./images/sky-snowy-night.jpg"
 		}
 	},
 	"73":{
 		"day":{
 			"description":"Snow",
-			"image":"http://openweathermap.org/img/wn/13d@2x.png"
+			"image":"http://openweathermap.org/img/wn/13d@2x.png",
+            "background":"./images/sky-snowy-day.jpg"
 		},
 		"night":{
 			"description":"Snow",
-			"image":"http://openweathermap.org/img/wn/13n@2x.png"
+			"image":"http://openweathermap.org/img/wn/13n@2x.png",
+            "background":"./images/sky-snowy-night.jpg"
 		}
 	},
 	"75":{
 		"day":{
 			"description":"Heavy Snow",
-			"image":"http://openweathermap.org/img/wn/13d@2x.png"
+			"image":"http://openweathermap.org/img/wn/13d@2x.png",
+            "background":"./images/sky-snowy-day.jpg"
 		},
 		"night":{
 			"description":"Heavy Snow",
-			"image":"http://openweathermap.org/img/wn/13n@2x.png"
+			"image":"http://openweathermap.org/img/wn/13n@2x.png",
+            "background":"./images/sky-snowy-night.jpg"
 		}
 	},
 	"77":{
 		"day":{
 			"description":"Snow Grains",
-			"image":"http://openweathermap.org/img/wn/13d@2x.png"
+			"image":"http://openweathermap.org/img/wn/13d@2x.png",
+            "background":"./images/sky-snowy-day.jpg"
 		},
 		"night":{
 			"description":"Snow Grains",
 			"image":"http://openweathermap.org/img/wn/13n@2x.png",
-            "background":"./images/sky-rainy-night.jpg"
+            "background":"./images/sky-snowy-night.jpg"
 		}
 	},
 	"80":{
@@ -271,51 +278,61 @@ const weatherDescriptions = {
 	"85":{
 		"day":{
 			"description":"Light Snow Showers",
-			"image":"http://openweathermap.org/img/wn/13d@2x.png"
+			"image":"http://openweathermap.org/img/wn/13d@2x.png",
+            "background":"./images/sky-snowy-day.jpg"
 		},
 		"night":{
 			"description":"Light Snow Showers",
-			"image":"http://openweathermap.org/img/wn/13n@2x.png"
+			"image":"http://openweathermap.org/img/wn/13n@2x.png",
+            "background":"./images/sky-snowy-night.jpg"
 		}
 	},
 	"86":{
 		"day":{
 			"description":"Snow Showers",
-			"image":"http://openweathermap.org/img/wn/13d@2x.png"
+			"image":"http://openweathermap.org/img/wn/13d@2x.png",
+            "background":"./images/sky-snowy-day.jpg"
 		},
 		"night":{
 			"description":"Snow Showers",
-			"image":"http://openweathermap.org/img/wn/13n@2x.png"
+			"image":"http://openweathermap.org/img/wn/13n@2x.png",
+            "background":"./images/sky-snowy-night.jpg"
 		}
 	},
 	"95":{
 		"day":{
 			"description":"Thunderstorm",
-			"image":"http://openweathermap.org/img/wn/11d@2x.png"
+			"image":"http://openweathermap.org/img/wn/11d@2x.png",
+            "background":"./images/sky-thunder-night.jpg"
 		},
 		"night":{
 			"description":"Thunderstorm",
-			"image":"http://openweathermap.org/img/wn/11n@2x.png"
+			"image":"http://openweathermap.org/img/wn/11n@2x.png",
+            "background":"./images/sky-thunder-night.jpg"
 		}
 	},
 	"96":{
 		"day":{
 			"description":"Light Thunderstorms With Hail",
-			"image":"http://openweathermap.org/img/wn/11d@2x.png"
+			"image":"http://openweathermap.org/img/wn/11d@2x.png",
+            "background":"./images/sky-thunder-night.jpg"
 		},
 		"night":{
 			"description":"Light Thunderstorms With Hail",
-			"image":"http://openweathermap.org/img/wn/11n@2x.png"
+			"image":"http://openweathermap.org/img/wn/11n@2x.png",
+            "background":"./images/sky-thunder-night.jpg"
 		}
 	},
 	"99":{
 		"day":{
 			"description":"Thunderstorm With Hail",
-			"image":"http://openweathermap.org/img/wn/11d@2x.png"
+			"image":"http://openweathermap.org/img/wn/11d@2x.png",
+            "background":"./images/sky-thunder-night.jpg"
 		},
 		"night":{
 			"description":"Thunderstorm With Hail",
-			"image":"http://openweathermap.org/img/wn/11n@2x.png"
+			"image":"http://openweathermap.org/img/wn/11n@2x.png",
+            "background":"./images/sky-thunder-night.jpg"
 		}
 	}
 }
