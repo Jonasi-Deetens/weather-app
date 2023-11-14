@@ -28,7 +28,7 @@ async function getGeoData() {
     const cityInput = document.querySelector("#cities-input")
     const city = cityInput.value;
 
-    const response = await fetch(geoAPI + city);
+    const response = await fetch(geoAPI + encodeURI(city));
     const data = await response.json();
     return data.results[0];
 }
@@ -42,7 +42,6 @@ async function getWeatherData() {
 async function generateWeatherForecast() {
     const d = new Date();
     let hour = d.getHours();
-    const currentTime = weatherData.daily.time[0].split("-");
 
     const forecastElement = document.querySelector("#forecast");
     forecastElement.innerHTML = "";
@@ -56,17 +55,29 @@ async function generateWeatherForecast() {
     currentForecastElement.addEventListener("click", showHourlyForecast);
     const currentWeather = weatherDescriptions[weatherData.daily.weather_code[0]];
 
+    //CREATE TITEL SECTION
+    
+    const cityTitelElement = document.createElement("section");
+    cityTitelElement.classList.add("weather-section-title");
+
+    const h2TitleElement = document.createElement("h2");
+    h2TitleElement.textContent = geoData.name;
+    cityTitelElement.appendChild(h2TitleElement);
+
+    currentForecastElement.prepend(cityTitelElement);
+
     //CREATE FRONTSIDE CURRENT WEATHER
     const currentForecastFrontElement = document.createElement("section");
     currentForecastFrontElement.classList.add("weather-section-front");
 
-    const h1Element = document.createElement("h2");
-    h1Element.textContent = geoData.name;
-    currentForecastFrontElement.appendChild(h1Element);
-
     const h2ElementDay = document.createElement("h2");
     h2ElementDay.textContent = "Today";
     currentForecastFrontElement.appendChild(h2ElementDay);
+
+    const h2ElementDescription = document.createElement("h2");
+    if (weatherData.current.is_day) h2ElementDescription.textContent = currentWeather.day.description;
+    else h2ElementDescription.textContent = currentWeather.night.description;
+    currentForecastFrontElement.appendChild(h2ElementDescription);
 
     const imgElement = document.createElement("img");
     if (weatherData.current.is_day) imgElement.src = currentWeather.day.image;
