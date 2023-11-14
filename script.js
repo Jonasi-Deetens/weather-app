@@ -17,7 +17,6 @@ async function fetchData() {
 
 function initApp() {
     addListeners();
-    fetchData();
 }
 
 function addListeners() {
@@ -31,7 +30,7 @@ function addListeners() {
 
 async function getGeoData() {
     const cityInput = document.querySelector("#cities-input");
-    const city = "ghent";//cityInput.value;
+    const city = cityInput.value;
 
     const response = await fetch(geoAPI + encodeURI(city));
     const data = await response.json();
@@ -75,7 +74,7 @@ async function generateWeatherForecast() {
 
     //CREATE FRONTSIDE CURRENT WEATHER
     const currentForecastFrontElement = document.createElement("section");
-    currentForecastFrontElement.classList.add("weather-section-front", "hidden");
+    currentForecastFrontElement.classList.add("weather-section-front");
 
     const h2ElementDay = document.createElement("h2");
     h2ElementDay.textContent = "Today";
@@ -105,7 +104,7 @@ async function generateWeatherForecast() {
 
     //CREATE BACKSIDE CURRENT WEATHER
     const currentForecastBackElement = document.createElement("section");
-    currentForecastBackElement.classList.add("weather-section-back");
+    currentForecastBackElement.classList.add("weather-section-back", "hidden");
 
     const h2ElementBack = document.createElement("h2");
     h2ElementBack.textContent = "Today";
