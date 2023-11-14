@@ -75,7 +75,7 @@ async function generateWeatherForecast() {
 
     //CREATE FRONTSIDE CURRENT WEATHER
     const currentForecastFrontElement = document.createElement("section");
-    currentForecastFrontElement.classList.add("weather-section-front");
+    currentForecastFrontElement.classList.add("weather-section-front", "hidden");
 
     const h2ElementDay = document.createElement("h2");
     h2ElementDay.textContent = "Today";
@@ -105,7 +105,7 @@ async function generateWeatherForecast() {
 
     //CREATE BACKSIDE CURRENT WEATHER
     const currentForecastBackElement = document.createElement("section");
-    currentForecastBackElement.classList.add("weather-section-back", "hidden");
+    currentForecastBackElement.classList.add("weather-section-back");
 
     const h2ElementBack = document.createElement("h2");
     h2ElementBack.textContent = "Today";
