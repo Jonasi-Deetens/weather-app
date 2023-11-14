@@ -11,14 +11,18 @@
     <header></header>
     <main>
         <section id="main-content">
-            <label for="cities-input"><h1>Choose a city:</h1></label>
+            <h1>Weather Forecast</h1>
             <br>
-            <input type="text" name="cities-input" id="cities-input">
+            <form id="search-form" id="cities-form">
+                <label for="cities-input">
+                    <input type="text" name="cities-input" id="cities-input">
+                </label>
+                <button id="get-weather-button">Get weather</button>
+            </form>
             <br>
-            <button id="get-weather-button">Get weather</button>
         </section>
-        <section id="forecast-today"></section>
-        <section id="forecast"></section>
+        <div id="forecast-today"></div>
+        <div id="forecast"></div>
     </main>
     <footer></footer>
 </body>

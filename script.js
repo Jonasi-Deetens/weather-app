@@ -20,13 +20,12 @@ function initApp() {
 }
 
 function addListeners() {
-    const cityInput = document.querySelector("#cities-input");
-    cityInput.addEventListener("keyup", (event) => {
-        if (event.code === "Enter") fetchData();
-    });
+    const form = document.querySelector("#search-form");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-    const weatherButton = document.querySelector("#get-weather-button");
-    weatherButton.addEventListener("click", fetchData);
+        fetchData();
+    });
 }
 
 async function getGeoData() {

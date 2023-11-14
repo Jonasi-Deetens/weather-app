@@ -52,6 +52,12 @@ img {
     padding: 5px;
 }
 
+#cities-form {
+    border: 2px solid black;
+    padding: 5px;
+    background-color: white;
+}
+
 #forecast-today {
     width: 70%;
     margin: auto;
