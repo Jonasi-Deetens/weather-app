@@ -1,4 +1,5 @@
 import { weatherDescriptions } from "./weatherDescriptions.js";
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"];
 const geoAPI = "https://geocoding-api.open-meteo.com/v1/search?name=";
 
@@ -59,7 +60,7 @@ async function generateWeatherForecast() {
     const currentForecastFrontElement = document.createElement("section");
     currentForecastFrontElement.classList.add("weather-section-front");
 
-    const h1Element = document.createElement("h1");
+    const h1Element = document.createElement("h2");
     h1Element.textContent = geoData.name;
     currentForecastFrontElement.appendChild(h1Element);
 
@@ -89,7 +90,7 @@ async function generateWeatherForecast() {
     currentForecastBackElement.classList.add("weather-section-back", "hidden");
 
     const h2ElementBack = document.createElement("h2");
-    h2ElementBack.textContent = currentTime[2] + " " + months[currentTime[1]-1];
+    h2ElementBack.textContent = "Today";
     currentForecastBackElement.appendChild(h2ElementBack);
 
     const flexElement = createHourlyForecast(hour, 0, weatherData);
@@ -99,6 +100,7 @@ async function generateWeatherForecast() {
     
     //CREATE 7 day forecast
     for (let index = 1; index < 7; index++) {
+        const day = new Date(weatherData.daily.time[index]).getDay();
         const time = weatherData.daily.time[index].split("-");
         const weatherCode = weatherDescriptions[weatherData.daily.weather_code[index]];
 
@@ -111,7 +113,7 @@ async function generateWeatherForecast() {
         sectionElement.classList.add("weather-section-front");
 
         const h2Element = document.createElement("h2");
-        h2Element.textContent = time[2] + " " + months[time[1]-1];
+        h2Element.textContent = days[day] + " " + time[2] + " " + months[time[1]-1];
         sectionElement.appendChild(h2Element);
 
         const div = document.createElement("div");
@@ -157,13 +159,12 @@ async function generateWeatherForecast() {
         sectionElement.appendChild(pElementTemperature);
         weatherElement.appendChild(sectionElement);
 
-
         //CREATE BACKSIDE
         const sectionElementBack = document.createElement("section");
         sectionElementBack.classList.add("weather-section-back", "hidden");
 
         const h2ElementBack = document.createElement("h2");
-        h2ElementBack.textContent = time[2] + " " + months[time[1]-1];
+        h2ElementBack.textContent = days[day] + " " + time[2] + " " + months[time[1]-1];
         sectionElementBack.appendChild(h2ElementBack);
 
         const flexElementBack = createHourlyForecast(0, index, weatherData);
@@ -177,8 +178,9 @@ async function generateWeatherForecast() {
 }
 
 function createHourlyForecast(startIndex, day, weatherData) {
-    const forecastElement = document.createElement("div");
+    const forecastElement = document.createElement("section");
     forecastElement.style.display = "flex";
+    forecastElement.setAttribute("tabindex", "0");
     forecastElement.classList.add("overflow");
     for (let index = startIndex + (24 * day); index < 24 * (day + 1); index++) {
         const hourlyCard = document.createElement("div");
@@ -192,6 +194,7 @@ function createHourlyForecast(startIndex, day, weatherData) {
         if (weatherData.current.is_day) hourlyImage.src = weatherDescriptions[weatherData.hourly.weather_code[index]].day.image;
         else hourlyImage.src = weatherDescriptions[weatherData.hourly.weather_code[index]].night.image;
         hourlyImage.classList.add("small");
+        hourlyImage.alt = "weather image " + weatherData.hourly.time[index].split("T")[1];
         hourlyCard.appendChild(hourlyImage);
 
         const hourlyTemp = document.createElement("p");
@@ -215,7 +218,6 @@ function showHourlyForecast(event) {
     const frontSections = document.querySelectorAll(".weather-section-front");
     const backSections = document.querySelectorAll(".weather-section-back");
     const target = event.target;
-    console.log(target.parentElement);
     
     if (target.classList.contains("weather-section-front") || target.parentElement.classList.contains("weather-section-front")) {
         frontSections.forEach((element, index) => {
@@ -230,7 +232,6 @@ function showHourlyForecast(event) {
             }
         });
     } else if (target.classList.contains("weather-section-back") || target.parentElement.classList.contains("weather-section-back")) {
-        console.log("back");
         backSections.forEach((element, index) => {
             if (element === target || element === target.parentElement) {
                 if (element.classList.contains("hidden")) {
