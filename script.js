@@ -39,7 +39,7 @@ async function getGeoData() {
 }
 
 async function getWeatherData() {
-    const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=" + geoData.latitude + "&longitude=" + geoData.longitude +"&current=temperature_2m,apparent_temperature,is_day,precipitation,rain,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,weather_code,cloud_cover,visibility,wind_speed_10m,wind_speed_80m,wind_speed_120m,wind_speed_180m,wind_direction_10m,wind_direction_80m,wind_direction_120m,wind_direction_180m,wind_gusts_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,uv_index_clear_sky_max,precipitation_sum,rain_sum,showers_sum,snowfall_sum,precipitation_hours,precipitation_probability_max");
+    const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=" + geoData.latitude + "&longitude=" + geoData.longitude +"&current=temperature_2m,apparent_temperature,is_day,precipitation,rain,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,weather_code,cloud_cover,visibility,wind_speed_10m,wind_speed_80m,wind_speed_120m,wind_speed_180m,wind_direction_10m,wind_direction_80m,wind_direction_120m,wind_direction_180m,wind_gusts_10m,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,uv_index_clear_sky_max,precipitation_sum,rain_sum,showers_sum,snowfall_sum,precipitation_hours,precipitation_probability_max");
     const data = await response.json();
     return data;
 }
@@ -59,6 +59,9 @@ async function generateWeatherForecast() {
     currentForecastElement.innerHTML = "";
     currentForecastElement.addEventListener("click", showHourlyForecast);
     const currentWeather = weatherDescriptions[weatherData.daily.weather_code[0]];
+
+    if (weatherData.current.is_day) document.body.style.backgroundImage = "url(./sky.jpg)";
+    else document.body.style.backgroundImage = "url(./sky-night.jpg)";
 
     //CREATE TITEL SECTION
     const cityTitelElement = document.createElement("section");
@@ -94,8 +97,8 @@ async function generateWeatherForecast() {
     currentForecastFrontElement.appendChild(h2Element);
 
     const pElementTemperature = document.createElement("p");
-    pElementTemperature.textContent = "H: " + weatherData.daily.temperature_2m_max[0] + weatherData.daily_units.temperature_2m_max +
-                                            " - L: " + weatherData.daily.temperature_2m_min[0] + weatherData.daily_units.temperature_2m_min;
+    pElementTemperature.textContent = "Max: " + weatherData.daily.temperature_2m_max[0] + weatherData.daily_units.temperature_2m_max +
+                                            " - Min: " + weatherData.daily.temperature_2m_min[0] + weatherData.daily_units.temperature_2m_min;
     currentForecastFrontElement.appendChild(pElementTemperature);
 
     currentForecastElement.appendChild(currentForecastFrontElement);
@@ -169,8 +172,8 @@ async function generateWeatherForecast() {
         sectionElement.appendChild(div);
 
         const pElementTemperature = document.createElement("p");
-        pElementTemperature.textContent = "H: " + weatherData.daily.temperature_2m_max[index] + weatherData.daily_units.temperature_2m_max +
-                                            " - L: " + weatherData.daily.temperature_2m_min[index] + weatherData.daily_units.temperature_2m_min;
+        pElementTemperature.textContent = "Max: " + weatherData.daily.temperature_2m_max[index] + weatherData.daily_units.temperature_2m_max +
+                                            " - Min: " + weatherData.daily.temperature_2m_min[index] + weatherData.daily_units.temperature_2m_min;
         sectionElement.appendChild(pElementTemperature);
         weatherElement.appendChild(sectionElement);
 
@@ -194,7 +197,6 @@ async function generateWeatherForecast() {
 
 function createHourlyForecast(startIndex, day, weatherData) {
     const forecastElement = document.createElement("section");
-    forecastElement.style.display = "flex";
     forecastElement.setAttribute("tabindex", "0");
     forecastElement.classList.add("overflow");
     for (let index = startIndex + (24 * day); index < 24 * (day + 1); index++) {
@@ -206,7 +208,7 @@ function createHourlyForecast(startIndex, day, weatherData) {
         hourlyCard.appendChild(hourElement);
 
         const hourlyImage = document.createElement("img");
-        if (weatherData.current.is_day) hourlyImage.src = weatherDescriptions[weatherData.hourly.weather_code[index]].day.image;
+        if (weatherData.hourly.is_day[index]) hourlyImage.src = weatherDescriptions[weatherData.hourly.weather_code[index]].day.image;
         else hourlyImage.src = weatherDescriptions[weatherData.hourly.weather_code[index]].night.image;
         hourlyImage.classList.add("small");
         hourlyImage.alt = "weather image " + weatherData.hourly.time[index].split("T")[1];

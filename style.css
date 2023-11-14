@@ -92,8 +92,9 @@ img {
 }
 
 .overflow {
-    overflow-x: scroll;
+    overflow: auto;
     margin: 10px;
+    display: flex;
 }
 
 .small {
@@ -101,7 +102,7 @@ img {
     height: 50px;
     background-color: transparent;
     border: 2px solid white;
-    filter: drop-shadow(1px 1px 1px white);
+    filter: drop-shadow(0px 0px 2px white);
 }
 
 .weather-section {
@@ -119,7 +120,7 @@ img {
 }
 
 .weather-section-back {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.80);
     color: white;
     box-shadow: 0 0 5px white;
     border: 3px solid white;
