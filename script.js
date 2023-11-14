@@ -199,7 +199,7 @@ function createHourlyForecast(startIndex, day, weatherData) {
     const forecastElement = document.createElement("section");
     forecastElement.setAttribute("tabindex", "0");
     forecastElement.classList.add("overflow");
-    for (let index = startIndex + (24 * day); index < 24 * (day + 1); index++) {
+    for (let index = startIndex + (24 * day); index < (24 * (day + 1)) + startIndex; index++) {
         const hourlyCard = document.createElement("div");
         hourlyCard.classList.add("hourly-section")
 
