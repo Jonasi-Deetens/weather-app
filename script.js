@@ -78,7 +78,9 @@ async function generateWeatherForecast() {
     else imgElement.src = currentWeather.night.image;
     imgElement.alt = "current weather image";
     imgElement.classList.add("large");
-    document.querySelector("#current-weather-image").appendChild(imgElement);
+    const figureElement = document.querySelector("#current-weather-image");
+    figureElement.innerHTML = "";
+    figureElement.appendChild(imgElement);
 
     const currentTempElement = document.querySelector("#current-temp");
     currentTempElement.textContent = weatherData.current.temperature_2m + weatherData.current_units.temperature_2m;

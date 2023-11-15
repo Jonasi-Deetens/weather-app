@@ -122,7 +122,6 @@ img {
 .flex {
     display: flex;
     justify-content: space-around;
-    align-items: center;
 }
 
 .large {
@@ -146,6 +145,7 @@ img {
 
 .weather-current-content {
     width: 90%;
+    align-items: center;
 }
 
 .weather-section {
@@ -167,7 +167,6 @@ img {
     color: white;
     box-shadow: 0 0 5px white;
     border: 3px solid white;
-    height: 300px;
     width: 100%;
 }
 
@@ -177,7 +176,6 @@ img {
     box-shadow: 0 0 5px black;
     border: 3px solid black;
     border-left: 0;
-    height: 300px;
     width: 100%;
 }
 
@@ -185,7 +183,6 @@ img {
     background-color: rgba(0, 0, 0, 0.95);
     color: white;
     vertical-align: middle;
-    height: 300px;
     width: 10%;
     writing-mode: vertical-lr;
     text-orientation: upright;
@@ -203,5 +200,17 @@ img {
 
     #search-form {
         width: 70%;
+    }
+
+    .weather-section-title {
+        width: 20%;
+    }
+
+    .weather-current-content {
+        width: 80%;
+    }
+
+    .weather-current-content {
+        flex-direction: column;
     }
 }
