@@ -61,7 +61,6 @@ p {
 
 img {
     border-radius: 100%;
-    border: 2px solid black;
     filter: drop-shadow(1px 1px 2px black);
 }
 
@@ -107,6 +106,12 @@ img {
 
 #search-form {
     margin: 10px;
+}
+
+.hide-label {
+    position: absolute;
+    top: -999px;
+    left: -999px;
 }
 
 .hidden {
