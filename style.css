@@ -5,8 +5,12 @@
 
 .overflow::-webkit-scrollbar {
     height: 5px;
+} 
+
+#forecast::-webkit-scrollbar {
+    height: 0px;
 }
-.overflow::-webkit-scrollbar-thumb {
+.overflow::-webkit-scrollbar-thumb, #forecast::-webkit-scrollbar {
     background-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -71,7 +75,7 @@ img {
 
 #forecast {
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: auto;
     justify-content: space-between;
     width: 70%;
     margin: auto;
@@ -108,7 +112,7 @@ img {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .hourly-section {
@@ -119,6 +123,10 @@ img {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.large {
+    width: 150px;
 }
 
 .overflow {
@@ -136,17 +144,22 @@ img {
     filter: drop-shadow(0px 0px 2px white);
 }
 
+.weather-current-content {
+    width: 90%;
+}
+
 .weather-section {
-    width: 24%;
     margin-bottom: 30px;
 }
 
 .weather-section-content {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.5);
     color: black;
     box-shadow: 0 0 5px black;
     border: 3px solid black;
-    height: 300px;
+    height: 260px;
+    width: 200px;
+    margin: 20px;
 }
 
 .weather-section-current-back {
@@ -155,7 +168,7 @@ img {
     box-shadow: 0 0 5px white;
     border: 3px solid white;
     height: 300px;
-    width: 90%;
+    width: 100%;
 }
 
 .weather-section-current-front {
@@ -165,16 +178,12 @@ img {
     border: 3px solid black;
     border-left: 0;
     height: 300px;
-    width: 90%;
+    width: 100%;
 }
 
 .weather-section-title {
     background-color: rgba(0, 0, 0, 0.95);
     color: white;
-    box-shadow: 0 0 5px white;
-    border: 3px solid white;
-    border-right: 0;
-    /* margin-bottom: 20px; */
     vertical-align: middle;
     height: 300px;
     width: 10%;
@@ -194,9 +203,5 @@ img {
 
     #search-form {
         width: 70%;
-    }
-
-    .weather-section {
-        width: 100%;
     }
 }

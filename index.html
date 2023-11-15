@@ -23,9 +23,30 @@
             </form>
             <br>
         </section>
-        <hr class="cartoon-rule hidden">
-        <div id="forecast-today"></div>
-        <div id="forecast"></div>
+        <div id="forecast-today" class="hidden">
+            <section class="weather-section-current-front flex">
+                <section class="weather-section-title flex">
+                    <h2></h2>
+                </section>
+                <div class="flex weather-current-content">
+                    <section>
+                        <h2>Today</h2>
+                        <h3 id="current-weather-description"></h3>
+                    </section>
+                    <div>
+                        <figure id="current-weather-image">
+                        </figure>
+                    </div>
+                    <div>
+                        <h2 id="current-temp"></h2>
+                        <p id="feels-temp"></p>
+                        <p id="max-temp"></p>
+                        <p id="min-temp"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div tabindex="0" id="forecast"></div>
     </main>
     <footer></footer>
     <script type="module" src="./script.js"></script>

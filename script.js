@@ -55,8 +55,8 @@ async function generateWeatherForecast() {
     console.log(weatherData);
     
     const currentForecastElement = document.querySelector("#forecast-today");
-    currentForecastElement.innerHTML = "";
     currentForecastElement.classList.add("flex");
+    currentForecastElement.classList.remove("hidden");
     currentForecastElement.addEventListener("click", showHourlyForecast);
     const currentWeather = weatherDescriptions[weatherData.daily.weather_code[0]];
 
@@ -64,44 +64,33 @@ async function generateWeatherForecast() {
     else document.body.children[0].style.backgroundImage = "url(" +  weatherDescriptions[weatherData.daily.weather_code[0]].night.background + ")";
 
     //CREATE TITEL SECTION
-    const cityTitelElement = document.createElement("section");
-    cityTitelElement.classList.add("weather-section-title", "flex");
-
-    const h2TitleElement = document.createElement("h2");
-    h2TitleElement.textContent = geoData.name;
-    cityTitelElement.appendChild(h2TitleElement);
-
-    currentForecastElement.prepend(cityTitelElement);
+    const cityTitelElement = document.querySelector(".weather-section-title");
+    console.log(cityTitelElement);
+    cityTitelElement.children[0].textContent = geoData.name;
 
     //CREATE FRONTSIDE CURRENT WEATHER
-    const currentForecastFrontElement = document.createElement("section");
-    currentForecastFrontElement.classList.add("weather-section-current-front");
-
-    const h2ElementDay = document.createElement("h2");
-    h2ElementDay.textContent = "Today";
-    currentForecastFrontElement.appendChild(h2ElementDay);
-
-    const h2ElementDescription = document.createElement("h2");
-    if (weatherData.current.is_day) h2ElementDescription.textContent = currentWeather.day.description;
-    else h2ElementDescription.textContent = currentWeather.night.description;
-    currentForecastFrontElement.appendChild(h2ElementDescription);
+    const h3ElementDescription = document.querySelector("#current-weather-description")
+    if (weatherData.current.is_day) h3ElementDescription.textContent = currentWeather.day.description;
+    else h3ElementDescription.textContent = currentWeather.night.description;
 
     const imgElement = document.createElement("img");
     if (weatherData.current.is_day) imgElement.src = currentWeather.day.image;
     else imgElement.src = currentWeather.night.image;
     imgElement.alt = "current weather image";
-    currentForecastFrontElement.appendChild(imgElement);
+    imgElement.classList.add("large");
+    document.querySelector("#current-weather-image").appendChild(imgElement);
 
-    const h2Element = document.createElement("h2");
-    h2Element.textContent = weatherData.current.temperature_2m + weatherData.current_units.temperature_2m;
-    currentForecastFrontElement.appendChild(h2Element);
+    const currentTempElement = document.querySelector("#current-temp");
+    currentTempElement.textContent = weatherData.current.temperature_2m + weatherData.current_units.temperature_2m;
 
-    const pElementTemperature = document.createElement("p");
-    pElementTemperature.textContent = "Max: " + weatherData.daily.temperature_2m_max[0] + weatherData.daily_units.temperature_2m_max +
-                                            " - Min: " + weatherData.daily.temperature_2m_min[0] + weatherData.daily_units.temperature_2m_min;
-    currentForecastFrontElement.appendChild(pElementTemperature);
+    const feelsTempElement = document.querySelector("#feels-temp");
+    feelsTempElement.textContent = "Feel: " + weatherData.hourly.apparent_temperature[hour] + weatherData.daily_units.temperature_2m_min;
 
-    currentForecastElement.appendChild(currentForecastFrontElement);
+    const maxTempElement = document.querySelector("#max-temp");
+    maxTempElement.textContent = "Max: " + weatherData.daily.temperature_2m_max[0] + weatherData.daily_units.temperature_2m_max;
+
+    const minTempElement = document.querySelector("#min-temp");
+    minTempElement.textContent = "Min: " + weatherData.daily.temperature_2m_min[0] + weatherData.daily_units.temperature_2m_min;
 
     //CREATE BACKSIDE CURRENT WEATHER
     const currentForecastBackElement = document.createElement("section");
@@ -110,10 +99,6 @@ async function generateWeatherForecast() {
     const h2ElementBack = document.createElement("h2");
     h2ElementBack.textContent = "Today";
     currentForecastBackElement.appendChild(h2ElementBack);
-
-    // const pElementBack = document.createElement("p");
-    // pElementBack.textContent = "Hourly report";
-    // currentForecastBackElement.appendChild(pElementBack);
 
     const flexElement = createHourlyForecast(hour, 0, weatherData);
     currentForecastBackElement.appendChild(flexElement);
@@ -141,10 +126,6 @@ async function generateWeatherForecast() {
         div.classList.add("flex");
 
         const divDay = document.createElement("div");
-
-        const h3ElementDay = document.createElement("h3");
-        h3ElementDay.textContent = "Day";
-        divDay.appendChild(h3ElementDay);
 
         const pElementDay = document.createElement("p");
         pElementDay.textContent = weatherCode.day.description;
