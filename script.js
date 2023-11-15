@@ -56,6 +56,7 @@ async function generateWeatherForecast() {
     
     const currentForecastElement = document.querySelector("#forecast-today");
     currentForecastElement.innerHTML = "";
+    currentForecastElement.classList.add("flex");
     currentForecastElement.addEventListener("click", showHourlyForecast);
     const currentWeather = weatherDescriptions[weatherData.daily.weather_code[0]];
 
@@ -64,7 +65,7 @@ async function generateWeatherForecast() {
 
     //CREATE TITEL SECTION
     const cityTitelElement = document.createElement("section");
-    cityTitelElement.classList.add("weather-section-title");
+    cityTitelElement.classList.add("weather-section-title", "flex");
 
     const h2TitleElement = document.createElement("h2");
     h2TitleElement.textContent = geoData.name;
@@ -74,7 +75,7 @@ async function generateWeatherForecast() {
 
     //CREATE FRONTSIDE CURRENT WEATHER
     const currentForecastFrontElement = document.createElement("section");
-    currentForecastFrontElement.classList.add("weather-section-front");
+    currentForecastFrontElement.classList.add("weather-section-current-front");
 
     const h2ElementDay = document.createElement("h2");
     h2ElementDay.textContent = "Today";
@@ -104,11 +105,15 @@ async function generateWeatherForecast() {
 
     //CREATE BACKSIDE CURRENT WEATHER
     const currentForecastBackElement = document.createElement("section");
-    currentForecastBackElement.classList.add("weather-section-back", "hidden");
+    currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
 
     const h2ElementBack = document.createElement("h2");
     h2ElementBack.textContent = "Today";
     currentForecastBackElement.appendChild(h2ElementBack);
+
+    // const pElementBack = document.createElement("p");
+    // pElementBack.textContent = "Hourly report";
+    // currentForecastBackElement.appendChild(pElementBack);
 
     const flexElement = createHourlyForecast(hour, 0, weatherData);
     currentForecastBackElement.appendChild(flexElement);
@@ -123,11 +128,10 @@ async function generateWeatherForecast() {
 
         const weatherElement = document.createElement("section");
         weatherElement.classList.add("weather-section");
-        weatherElement.addEventListener("click", showHourlyForecast);
 
         //CREATE FRONTSIDE   
         const sectionElement = document.createElement("section");
-        sectionElement.classList.add("weather-section-front");
+        sectionElement.classList.add("weather-section-content");
 
         const h2Element = document.createElement("h2");
         h2Element.textContent = days[day] + " " + time[2] + " " + months[time[1]-1];
@@ -152,22 +156,6 @@ async function generateWeatherForecast() {
         divDay.appendChild(imgElementDay);
 
         div.appendChild(divDay);
-        const divNight = document.createElement("div");
-
-        const h3ElementNight = document.createElement("h3");
-        h3ElementNight.textContent = "Night";
-        divNight.appendChild(h3ElementNight);
-
-        const pElementNight = document.createElement("p");
-        pElementNight.textContent = weatherCode.night.description;
-        divNight.appendChild(pElementNight);
-
-        const imgElementNight = document.createElement("img");
-        imgElementNight.src = weatherCode.night.image;
-        imgElementNight.alt = "weather night " + time[2] + " " + months[time[1]-1]
-        divNight.appendChild(imgElementNight);
-
-        div.appendChild(divNight);
         sectionElement.appendChild(div);
 
         const pElementTemperature = document.createElement("p");
@@ -175,19 +163,6 @@ async function generateWeatherForecast() {
                                             " - Min: " + weatherData.daily.temperature_2m_min[index] + weatherData.daily_units.temperature_2m_min;
         sectionElement.appendChild(pElementTemperature);
         weatherElement.appendChild(sectionElement);
-
-        //CREATE BACKSIDE
-        const sectionElementBack = document.createElement("section");
-        sectionElementBack.classList.add("weather-section-back", "hidden");
-
-        const h2ElementBack = document.createElement("h2");
-        h2ElementBack.textContent = days[day] + " " + time[2] + " " + months[time[1]-1];
-        sectionElementBack.appendChild(h2ElementBack);
-
-        const flexElementBack = createHourlyForecast(0, index, weatherData);
-        sectionElementBack.appendChild(flexElementBack);
-
-        weatherElement.appendChild(sectionElementBack);
 
         //ADD TO MAIN SECTION
         forecastElement.appendChild(weatherElement);
@@ -231,33 +206,14 @@ function createHourlyForecast(startIndex, day, weatherData) {
 }
 
 function showHourlyForecast(event) {
-    const frontSections = document.querySelectorAll(".weather-section-front");
-    const backSections = document.querySelectorAll(".weather-section-back");
-    const target = event.target;
+    const frontSection = document.querySelector(".weather-section-current-front");
+    const backSection = document.querySelector(".weather-section-current-back");
     
-    if (target.classList.contains("weather-section-front") || target.parentElement.classList.contains("weather-section-front")) {
-        frontSections.forEach((element, index) => {
-            if (element === target || element === target.parentElement) {
-                if (element.classList.contains("hidden")) {
-                    element.classList.remove("hidden")
-                    backSections[index].classList.add("hidden");
-                } else {
-                    element.classList.add("hidden");
-                    backSections[index].classList.remove("hidden");
-                }
-            }
-        });
-    } else if (target.classList.contains("weather-section-back") || target.parentElement.classList.contains("weather-section-back")) {
-        backSections.forEach((element, index) => {
-            if (element === target || element === target.parentElement) {
-                if (element.classList.contains("hidden")) {
-                    element.classList.remove("hidden")
-                    frontSections[index].classList.add("hidden");
-                } else {
-                    element.classList.add("hidden");
-                    frontSections[index].classList.remove("hidden");
-                }
-            }
-        });
+    if (frontSection.classList.contains("hidden")) {
+        frontSection.classList.remove("hidden");
+        backSection.classList.add("hidden");
+    } else {
+        frontSection.classList.add("hidden");
+        backSection.classList.remove("hidden");
     }
 }
