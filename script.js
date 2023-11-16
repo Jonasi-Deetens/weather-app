@@ -17,7 +17,7 @@ async function fetchData() {
 
 function initApp() {
     addListeners();
-    fetchData();
+     fetchData();
 }
 
 function addListeners() {
