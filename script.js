@@ -17,6 +17,7 @@ async function fetchData() {
 
 function initApp() {
     addListeners();
+    fetchData();
 }
 
 function addListeners() {
@@ -26,11 +27,15 @@ function addListeners() {
 
         fetchData();
     });
+
+    const hourlyButton = document.querySelector(".hourly");
+    hourlyButton.addEventListener("click", showHourlyForecast);
 }
 
 async function getGeoData() {
     const cityInput = document.querySelector("#cities-input");
-    const city = cityInput.value;
+    let city = cityInput.value;
+    if (city === "") city = "gent";
 
     const response = await fetch(geoAPI + encodeURI(city));
     const data = await response.json();
@@ -44,6 +49,7 @@ async function getWeatherData() {
 }
 
 async function generateWeatherForecast() {
+    console.log(weatherData);
     const d = new Date();
     let hour = d.getHours();
 
@@ -52,12 +58,13 @@ async function generateWeatherForecast() {
 
     const weatherSearchElement = document.querySelector("#main-content");
     weatherSearchElement.style.height = "200px";
-    console.log(weatherData);
+    document.querySelector(".weather-section-current-front").children[0].prepend(weatherSearchElement);
+
+    const windowElement = document.querySelector(".window");
+    windowElement.classList.remove("hidden");
     
     const currentForecastElement = document.querySelector("#forecast-today");
-    currentForecastElement.classList.add("flex");
     currentForecastElement.classList.remove("hidden");
-    currentForecastElement.addEventListener("click", showHourlyForecast);
     const currentWeather = weatherDescriptions[weatherData.daily.weather_code[0]];
 
     if (weatherData.current.is_day) document.body.children[0].style.backgroundImage = "url(" + weatherDescriptions[weatherData.daily.weather_code[0]].day.background + ")";
@@ -96,6 +103,7 @@ async function generateWeatherForecast() {
     //CREATE BACKSIDE CURRENT WEATHER
     const currentForecastBackElement = document.createElement("section");
     currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
+    currentForecastBackElement.addEventListener("click", showHourlyForecast);
 
     const flexElement = createHourlyForecast(hour, 0, weatherData);
     currentForecastBackElement.appendChild(flexElement);

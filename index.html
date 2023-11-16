@@ -11,18 +11,7 @@
     <header>
 
     </header>
-    <main>
-        <div class="fixed-image-container"></div>
-        <section id="main-content">
-            <h1 class="weather-title">Weather Forecast</h1>
-            <br>
-            <form id="search-form">
-                <label for="cities-input" class="hide-label">City:</label>
-                <input type="text" name="cities-input" id="cities-input" placeholder="e.g. gent">
-                <button id="get-weather-button">Get weather</button>
-            </form>
-            <br>
-        </section>
+    <main class="flex">
         <div id="forecast-today" class="hidden">
             <section class="weather-section-current-front">
                 <div class="flex weather-current-content">
@@ -40,10 +29,28 @@
                         <p id="max-temp"></p>
                         <p id="min-temp"></p>
                     </div>
+                    <button class="weather-button hourly">Show hourly</button>
                 </div>
             </section>
         </div>
-        <div tabindex="0" id="forecast"></div>
+        <section id="main-content">
+            <h1 class="weather-title">Weather Forecast</h1>
+            <br>
+            <form id="search-form">
+                <label for="cities-input" class="hide-label">City:</label>
+                <input type="text" name="cities-input" id="cities-input" placeholder="e.g. gent">
+                <button class="weather-button">Get weather</button>
+            </form>
+            <br>
+        </section>
+        <div class="fixed-image-container"></div>
+        <div class="window flex hidden">
+            <div class="window-top flex">
+                <div class="window-glas"></div>
+                <div class="window-glas"></div>
+            </div>
+            <div tabindex="0" id="forecast"></div>
+        </div>
     </main>
     <footer></footer>
     <script type="module" src="./script.js"></script>
