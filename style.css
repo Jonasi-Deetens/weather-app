@@ -26,9 +26,17 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('./images/sky-day.webp');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-header {
+/* header {
     position: fixed;
     top: 0;
     width: 100%;
@@ -42,7 +50,7 @@ header {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
+} */
 
 h1 {
     font-size: 1.7em;
