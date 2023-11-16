@@ -154,6 +154,11 @@ img {
     color: white;
 }
 
+.weather-button:active {
+    background-color: white;
+    color: black;
+}
+
 .weather-current-content {
     align-items: center;
     flex-direction: column;
@@ -204,6 +209,12 @@ img {
 .window {
     width: 100%;
     flex-direction: column;
+}
+
+.window-title {
+    font-size: 6em;
+    color: rgba(41, 36, 36, 0.6);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
 }
 
 .window-glas {

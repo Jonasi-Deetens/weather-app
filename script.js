@@ -30,6 +30,9 @@ function addListeners() {
 
     const hourlyButton = document.querySelector(".hourly");
     hourlyButton.addEventListener("click", showHourlyForecast);
+
+    const openWindowButton = document.querySelector(".open");
+    openWindowButton.addEventListener("click", openWindows);
 }
 
 async function getGeoData() {
@@ -194,6 +197,12 @@ function createHourlyForecast(startIndex, day, weatherData) {
         forecastElement.appendChild(hourlyCard);
     }
     return forecastElement;
+}
+
+function openWindows() {
+    const window = document.querySelector(".window");
+    if (window.classList.contains("hidden")) window.classList.remove("hidden");
+    else window.classList.add("hidden");
 }
 
 function showHourlyForecast(event) {
