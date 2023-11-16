@@ -125,31 +125,29 @@ async function generateWeatherForecast() {
         const sectionElement = document.createElement("section");
         sectionElement.classList.add("weather-section-content");
 
+        const div = document.createElement("div");
+        div.classList.add("flex-col");
+
         const h2Element = document.createElement("h2");
         h2Element.textContent = days[day] + " " + time[2] + " " + months[time[1]-1];
-        sectionElement.appendChild(h2Element);
-
-        const div = document.createElement("div");
-        div.classList.add("flex");
-
-        const divDay = document.createElement("div");
+        div.appendChild(h2Element);
 
         const pElementDay = document.createElement("p");
         pElementDay.textContent = weatherCode.day.description;
-        divDay.appendChild(pElementDay);
+        div.appendChild(pElementDay);
 
         const imgElementDay = document.createElement("img");
         imgElementDay.src = weatherCode.day.image;
         imgElementDay.alt = "weather day " + time[2] + " " + months[time[1]-1];
-        divDay.appendChild(imgElementDay);
-
-        div.appendChild(divDay);
-        sectionElement.appendChild(div);
+        div.appendChild(imgElementDay);
 
         const pElementTemperature = document.createElement("p");
         pElementTemperature.textContent = "Max: " + weatherData.daily.temperature_2m_max[index] + weatherData.daily_units.temperature_2m_max +
                                             " - Min: " + weatherData.daily.temperature_2m_min[index] + weatherData.daily_units.temperature_2m_min;
-        sectionElement.appendChild(pElementTemperature);
+        div.appendChild(pElementTemperature);
+
+        sectionElement.appendChild(div);
+
         weatherElement.appendChild(sectionElement);
 
         //ADD TO MAIN SECTION
