@@ -8,7 +8,7 @@
     width: 5px;
 } 
 
-#forecast::-webkit-scrollbar, .weather-current-content::-webkit-scrollbar {
+#forecast::-webkit-scrollbar, .flex-col::-webkit-scrollbar {
     height: 0px;
     width: 0px;
 }
@@ -76,7 +76,6 @@ img {
 
 #forecast-today {
     display: flex;
-    justify-content: space-around;
     width: 200px;
     height: 100vh;
     padding: 0;
@@ -129,8 +128,9 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 100%;
+    overflow: auto;
 }
 
 .overflow {
@@ -167,7 +167,6 @@ img {
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
-    overflow: auto;
 }
 
 .weather-section {
