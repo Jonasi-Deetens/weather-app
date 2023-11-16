@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Weather application">
+    <title>Weather-app</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div class="fixed-image-container"></div>
+        <section id="main-content">
+            <h1 class="weather-title">Weather Forecast</h1>
+            <br>
+            <form id="search-form">
+                <label for="cities-input" class="hide-label">City:</label>
+                <input type="text" name="cities-input" id="cities-input" placeholder="e.g. gent">
+                <button id="get-weather-button">Get weather</button>
+            </form>
+            <br>
+        </section>
+        <div id="forecast-today" class="hidden">
+            <section class="weather-section-current-front">
+                <div class="flex weather-current-content">
+                    <section>
+                        <h2>Today</h2>
+                        <h3 id="current-weather-description">Placeholder</h3>
+                    </section>
+                    <div>
+                        <figure id="current-weather-image">
+                        </figure>
+                    </div>
+                    <h2 id="current-temp">Placeholder</h2>
+                    <div>
+                        <p id="feels-temp"></p>
+                        <p id="max-temp"></p>
+                        <p id="min-temp"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div tabindex="0" id="forecast"></div>
+    </main>
+    <footer></footer>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
