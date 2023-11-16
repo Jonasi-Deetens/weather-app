@@ -273,6 +273,10 @@ img {
     .weather-section {
         min-width: 33.33%
     }
+
+    .hourly, .open {
+        display: none;
+    }
 }
 
 @media (max-width: 720px) {
