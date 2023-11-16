@@ -69,7 +69,6 @@ img {
 #forecast-today {
     width: 70%;
     margin: auto;
-    margin-bottom: 30px;
     padding: 0;
 }
 
@@ -105,6 +104,11 @@ img {
     margin: 10px;
 }
 
+.dark-title {
+    background-color: black;
+    color: white;
+}
+
 .hide-label {
     position: absolute;
     top: -999px;
@@ -122,10 +126,6 @@ img {
 .flex {
     display: flex;
     justify-content: space-around;
-}
-
-.large {
-    width: 150px;
 }
 
 .overflow {
@@ -149,7 +149,7 @@ img {
 }
 
 .weather-section {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .weather-section-content {
@@ -157,9 +157,8 @@ img {
     color: black;
     box-shadow: 0 0 5px black;
     border: 3px solid black;
-    height: 260px;
     width: 200px;
-    margin: 20px;
+    margin: 10px;
 }
 
 .weather-section-current-back {
@@ -175,17 +174,7 @@ img {
     color: black;
     box-shadow: 0 0 5px black;
     border: 3px solid black;
-    border-left: 0;
     width: 100%;
-}
-
-.weather-section-title {
-    background-color: rgba(0, 0, 0, 0.95);
-    color: white;
-    vertical-align: middle;
-    width: 10%;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
 }
 
 .weather-title {

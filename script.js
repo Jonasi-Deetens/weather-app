@@ -64,9 +64,9 @@ async function generateWeatherForecast() {
     else document.body.children[0].style.backgroundImage = "url(" +  weatherDescriptions[weatherData.daily.weather_code[0]].night.background + ")";
 
     //CREATE TITEL SECTION
-    const cityTitelElement = document.querySelector(".weather-section-title");
-    console.log(cityTitelElement);
-    cityTitelElement.children[0].textContent = geoData.name;
+    const cityTitelElement = document.querySelector(".weather-title");
+    cityTitelElement.textContent = geoData.name;
+    cityTitelElement.classList.add("dark-title");
 
     //CREATE FRONTSIDE CURRENT WEATHER
     const h3ElementDescription = document.querySelector("#current-weather-description")
@@ -77,7 +77,6 @@ async function generateWeatherForecast() {
     if (weatherData.current.is_day) imgElement.src = currentWeather.day.image;
     else imgElement.src = currentWeather.night.image;
     imgElement.alt = "current weather image";
-    imgElement.classList.add("large");
     const figureElement = document.querySelector("#current-weather-image");
     figureElement.innerHTML = "";
     figureElement.appendChild(imgElement);
@@ -97,10 +96,6 @@ async function generateWeatherForecast() {
     //CREATE BACKSIDE CURRENT WEATHER
     const currentForecastBackElement = document.createElement("section");
     currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
-
-    const h2ElementBack = document.createElement("h2");
-    h2ElementBack.textContent = "Today";
-    currentForecastBackElement.appendChild(h2ElementBack);
 
     const flexElement = createHourlyForecast(hour, 0, weatherData);
     currentForecastBackElement.appendChild(flexElement);
