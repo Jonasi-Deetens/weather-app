@@ -111,7 +111,6 @@ async function generateWeatherForecast() {
     const windowGlassElement = document.querySelector(".window-right");
     const currentForecastBackElement = document.createElement("div");
     currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
-    //currentForecastBackElement.addEventListener("click", showHourlyForecast);
 
     const h2ElementBack = document.createElement("h2");
     h2ElementBack.textContent = "Hourly forecast";
@@ -201,7 +200,11 @@ function createHourlyForecast(startIndex, day, weatherData) {
     return forecastElement;
 }
 
-function openWindows() {
+function openWindows(event) {
+    const button = event.target;
+    if (button.textContent === "Open windows") button.textContent = "Close windows";
+    else button.textContent = "Open windows";
+
     const windowLeft = document.querySelector(".window-left");  
     const windowRight = document.querySelector(".window-right");
 
@@ -215,12 +218,14 @@ function openWindows() {
 }
 
 function showHourlyForecast(event) {
+    const button = event.target;
     const backSection = document.querySelector(".weather-section-current-back");
-    //const windowGlassElement = document.querySelector(".window-left");
     
     if (backSection.classList.contains("hidden")) {
         backSection.classList.remove("hidden");
+        button.textContent = "Hide hourly";
     } else {
         backSection.classList.add("hidden");
+        button.textContent = "Show hourly";
     }
 }
