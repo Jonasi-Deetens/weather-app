@@ -58,6 +58,7 @@ async function generateWeatherForecast() {
 
     const weatherSearchElement = document.querySelector("#main-content");
     weatherSearchElement.style.height = "200px";
+    weatherSearchElement.style.margin = "0";
     document.querySelector(".weather-section-current-front").children[0].prepend(weatherSearchElement);
 
     const windowElement = document.querySelector(".window");

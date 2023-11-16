@@ -151,6 +151,8 @@ img {
 .weather-current-content {
     align-items: center;
     flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
 }
 
 .weather-section {
