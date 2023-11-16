@@ -17,7 +17,7 @@ async function fetchData() {
 
 function initApp() {
     addListeners();
-    //fetchData();
+    fetchData();
 }
 
 function addListeners() {
@@ -35,7 +35,7 @@ function addListeners() {
 async function getGeoData() {
     const cityInput = document.querySelector("#cities-input");
     let city = cityInput.value;
-    //if (city === "") city = "gent";
+    if (city === "") city = "gent";
 
     const response = await fetch(geoAPI + encodeURI(city));
     const data = await response.json();
@@ -103,14 +103,19 @@ async function generateWeatherForecast() {
     minTempElement.textContent = "Min: " + weatherData.daily.temperature_2m_min[0] + weatherData.daily_units.temperature_2m_min;
 
     //CREATE BACKSIDE CURRENT WEATHER
-    const currentForecastBackElement = document.createElement("section");
+    const windowGlassElement = document.querySelector(".window-top");
+    const currentForecastBackElement = document.createElement("div");
     currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
-    currentForecastBackElement.addEventListener("click", showHourlyForecast);
+    //currentForecastBackElement.addEventListener("click", showHourlyForecast);
+
+    const h2ElementBack = document.createElement("h2");
+    h2ElementBack.textContent = "Hourly forecast";
+    currentForecastBackElement.appendChild(h2ElementBack);
 
     const flexElement = createHourlyForecast(hour, 0, weatherData);
     currentForecastBackElement.appendChild(flexElement);
 
-    currentForecastElement.appendChild(currentForecastBackElement);
+    windowGlassElement.appendChild(currentForecastBackElement);
     
     //CREATE 7 day forecast
     for (let index = 1; index < 7; index++) {
@@ -158,7 +163,7 @@ async function generateWeatherForecast() {
 function createHourlyForecast(startIndex, day, weatherData) {
     const forecastElement = document.createElement("section");
     forecastElement.setAttribute("tabindex", "0");
-    forecastElement.classList.add("overflow");
+    forecastElement.classList.add("flex");
     for (let index = startIndex + (24 * day); index < (24 * (day + 1)) + startIndex; index++) {
         const hourlyCard = document.createElement("div");
         hourlyCard.classList.add("hourly-section")
@@ -192,14 +197,14 @@ function createHourlyForecast(startIndex, day, weatherData) {
 }
 
 function showHourlyForecast(event) {
-    const frontSection = document.querySelector(".weather-section-current-front");
     const backSection = document.querySelector(".weather-section-current-back");
+    const windowGlassElement = document.querySelector(".window-glas");
     
-    if (frontSection.classList.contains("hidden")) {
-        frontSection.classList.remove("hidden");
-        backSection.classList.add("hidden");
-    } else {
-        frontSection.classList.add("hidden");
+    if (backSection.classList.contains("hidden")) {
         backSection.classList.remove("hidden");
+        windowGlassElement.classList.add("hidden");
+    } else {
+        backSection.classList.add("hidden");
+        windowGlassElement.classList.remove("hidden");
     }
 }

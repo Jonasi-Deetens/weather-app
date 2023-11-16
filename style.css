@@ -3,21 +3,17 @@
     src: url("./Bangers-Regular.ttf");
 }
 
-.overflow::-webkit-scrollbar, .flex-col::-webkit-scrollbar {
+.flex-col::-webkit-scrollbar, .flex::-webkit-scrollbar {
     height: 5px;
     width: 5px;
 } 
 
-.flex-col::-webkit-scrollbar-thumb {
+.flex-col::-webkit-scrollbar-thumb, .flex::-webkit-scrollbar-thumb {
     background-color: rgba(200, 200, 200, 0.7);
 }
 
 #forecast::-webkit-scrollbar {
     width: 0px;
-}
-
-.overflow::-webkit-scrollbar-thumb, #forecast::-webkit-scrollbar {
-    background-color: rgba(255, 255, 255, 0.7);
 }
 
 * {
@@ -124,7 +120,8 @@ img {
 
 .flex {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    overflow: auto; 
 }
 
 .flex-col {
@@ -134,14 +131,6 @@ img {
     justify-content: space-between;
     height: 100%;
     overflow: auto;
-}
-
-.overflow {
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
 }
 
 .small {
@@ -187,12 +176,15 @@ img {
 }
 
 .weather-section-current-back {
-    background-color: rgba(0, 0, 0, 0.80);
-    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.50);
     color: white;
-    box-shadow: 0 0 5px white;
-    border: 3px solid white;
-    width: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border: 5px solid black;
+    box-shadow: inset 0 0 10px white;
 }
 
 .weather-section-current-front {
@@ -217,9 +209,9 @@ img {
 .window-glas {
     border: 5px solid black;
     border-bottom: 0;
-    width: 100%;
+    width: 50%;
     box-shadow: inset 0 0 10px white;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .window-top {
