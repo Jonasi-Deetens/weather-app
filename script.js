@@ -106,7 +106,7 @@ async function generateWeatherForecast() {
     minTempElement.textContent = "Min: " + weatherData.daily.temperature_2m_min[0] + weatherData.daily_units.temperature_2m_min;
 
     //CREATE BACKSIDE CURRENT WEATHER
-    const windowGlassElement = document.querySelector(".window-top");
+    const windowGlassElement = document.querySelector(".window-right");
     const currentForecastBackElement = document.createElement("div");
     currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
     //currentForecastBackElement.addEventListener("click", showHourlyForecast);
@@ -214,13 +214,11 @@ function openWindows() {
 
 function showHourlyForecast(event) {
     const backSection = document.querySelector(".weather-section-current-back");
-    const windowGlassElement = document.querySelector(".window-left");
+    //const windowGlassElement = document.querySelector(".window-left");
     
     if (backSection.classList.contains("hidden")) {
         backSection.classList.remove("hidden");
-        windowGlassElement.classList.add("hidden");
     } else {
         backSection.classList.add("hidden");
-        windowGlassElement.classList.remove("hidden");
     }
 }
