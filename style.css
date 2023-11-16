@@ -81,10 +81,12 @@ img {
 }
 
 #forecast {
+    bottom: 0;
     display: flex;
     overflow: auto;
     height: 40%;
     border: 5px solid black;
+    transition: bottom 2s linear;
 }
 
 #main-content {
@@ -220,15 +222,34 @@ img {
 .window-glas {
     border: 5px solid black;
     border-bottom: 0;
+    height: 100%;
     width: 50%;
     box-shadow: inset 0 0 10px white;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.window-left {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    transition: left 1s linear;
+}
+
+.window-right {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    transition: right 1s linear;
+}
+
 .window-top {
+    position: relative;
+    top: 0;
     border: 5px solid black;
     border-bottom: 0;
     height: 60%;
+    width: 100%;
+    overflow: hidden;
 }
 
 @media (max-width: 1024px) {

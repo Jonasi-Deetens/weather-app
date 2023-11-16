@@ -200,14 +200,21 @@ function createHourlyForecast(startIndex, day, weatherData) {
 }
 
 function openWindows() {
-    const window = document.querySelector(".window");
-    if (window.classList.contains("hidden")) window.classList.remove("hidden");
-    else window.classList.add("hidden");
+    const windowLeft = document.querySelector(".window-left");  
+    const windowRight = document.querySelector(".window-right");
+
+    if (windowLeft.style.left === "") {
+        windowLeft.style.left = "-999px";
+        windowRight.style.right = "-999px";
+    } else {
+        windowLeft.style.left = "";
+        windowRight.style.right = "";
+    }
 }
 
 function showHourlyForecast(event) {
     const backSection = document.querySelector(".weather-section-current-back");
-    const windowGlassElement = document.querySelector(".window-glas");
+    const windowGlassElement = document.querySelector(".window-left");
     
     if (backSection.classList.contains("hidden")) {
         backSection.classList.remove("hidden");
