@@ -3,13 +3,16 @@
     src: url("./Bangers-Regular.ttf");
 }
 
-.overflow::-webkit-scrollbar {
+.overflow::-webkit-scrollbar, .flex-col::-webkit-scrollbar {
     height: 5px;
     width: 5px;
 } 
 
-#forecast::-webkit-scrollbar, .flex-col::-webkit-scrollbar {
-    height: 0px;
+.flex-col::-webkit-scrollbar-thumb {
+    background-color: rgba(200, 200, 200, 0.7);
+}
+
+#forecast::-webkit-scrollbar {
     width: 0px;
 }
 
