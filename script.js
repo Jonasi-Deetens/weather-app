@@ -93,6 +93,8 @@ async function generateWeatherForecast() {
     figureElement.innerHTML = "";
     figureElement.appendChild(imgElement);
 
+    const windowTempElement = document.querySelector(".window-title");
+    windowTempElement.textContent = weatherData.current.temperature_2m + weatherData.current_units.temperature_2m;
     const currentTempElement = document.querySelector("#current-temp");
     currentTempElement.textContent = weatherData.current.temperature_2m + weatherData.current_units.temperature_2m;
 

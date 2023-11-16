@@ -73,6 +73,11 @@ img {
     padding: 5px;
 }
 
+#current-temp {
+    font-size: 3em;
+    margin: 0;
+}
+
 #forecast-today {
     display: flex;
     width: 200px;
