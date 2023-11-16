@@ -8,10 +8,11 @@
     width: 5px;
 } 
 
-#forecast::-webkit-scrollbar {
+#forecast::-webkit-scrollbar, .weather-current-content::-webkit-scrollbar {
     height: 0px;
     width: 0px;
 }
+
 .overflow::-webkit-scrollbar-thumb, #forecast::-webkit-scrollbar {
     background-color: rgba(255, 255, 255, 0.7);
 }
@@ -139,6 +140,7 @@ img {
 .weather-button {
     border: 3px solid black;
     padding: 5px;
+    margin-bottom: 10px;
 }
 
 .weather-button:hover {
@@ -152,7 +154,8 @@ img {
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100vh;
+    height: 100%;
+    overflow: auto;
 }
 
 .weather-section {
