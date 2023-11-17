@@ -119,6 +119,7 @@ async function generateWeatherForecast() {
     const flexElement = createHourlyForecast(hour, 0, weatherData);
     currentForecastBackElement.appendChild(flexElement);
 
+    windowGlassElement.innerHTML = "";
     windowGlassElement.appendChild(currentForecastBackElement);
     
     //CREATE 7 day forecast
