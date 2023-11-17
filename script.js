@@ -212,20 +212,29 @@ function createHourlyForecast(startIndex, day, weatherData) {
 
 function openWindows(event) {
     const button = event.target;
+    const gif = document.querySelector(".gif");
+    
+    //if (gif.style.display === "block") gif.style.display = "none";
+     gif.style.display = "block";
 
-    if (button.textContent === "Open windows") button.textContent = "Close windows";
-    else button.textContent = "Open windows";
 
     const windowLeft = document.querySelector(".window-left");  
     const windowRight = document.querySelector(".window-right");
 
-    if (windowLeft.style.left === "") {
-        windowLeft.style.left = "-999px";
-        windowRight.style.right = "-999px";
+    if (button.textContent === "Open windows") {
+        gif.src = "./images/lucas_up.gif";
+        windowRight.style.transform = "rotateY(-60deg)";
+        windowLeft.style.transform = "rotateY(60deg)";
     } else {
-        windowLeft.style.left = "";
-        windowRight.style.right = "";
+        gif.src = "./images/lucas_down.gif";
+        setTimeout(() => {
+            windowLeft.style.transform = "rotateY(0deg)";
+            windowRight.style.transform = "rotateY(0deg)";
+        }, 1500);
     }
+
+    if (button.textContent === "Open windows") button.textContent = "Close windows";
+    else button.textContent = "Open windows";
 }
 
 function showHourlyForecast(event) {
