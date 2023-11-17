@@ -77,7 +77,8 @@ async function generateWeatherForecast() {
 
     //CHANGE TITEL SECTION
     const cityTitelElement = document.querySelector(".weather-title");
-    cityTitelElement.textContent = geoData.name + ", " + geoData.country;
+    cityTitelElement.textContent = geoData.name;
+    if (geoData.country) cityTitelElement.textContent += ", " + geoData.country;
     cityTitelElement.classList.add("dark-title");
 
     //CREATE FRONTSIDE CURRENT WEATHER
@@ -108,6 +109,9 @@ async function generateWeatherForecast() {
     minTempElement.textContent = "Min: " + weatherData.daily.temperature_2m_min[0] + weatherData.daily_units.temperature_2m_min;
 
     //CREATE BACKSIDE CURRENT WEATHER
+    document.querySelector("#current-rain").textContent = weatherData.current.precipitation + " " + weatherData.current_units.precipitation;
+    document.querySelector("#current-wind").textContent = weatherData.current.wind_speed_10m + " " + weatherData.current_units.wind_speed_10m;
+
     const hourlyDiv = document.createElement("div");
     hourlyDiv.classList.add("window-glas", "window-right", "phone");
     forecastElement.appendChild(hourlyDiv);
