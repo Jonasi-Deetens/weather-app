@@ -75,7 +75,7 @@ img {
 #forecast-today {
     display: flex;
     width: 200px;
-    height: 100vh;
+    height: 100svh;
     padding: 0;
 }
 
@@ -92,7 +92,7 @@ img {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 95vh;
+    height: 95svh;
     margin: auto;
 }
 
@@ -281,7 +281,7 @@ img {
 
 @media (max-width: 1024px) {
     #forecast {
-        height: 100vh;
+        height: 100svh;
         flex-direction: column;
     }
 
