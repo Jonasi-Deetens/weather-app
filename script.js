@@ -59,6 +59,9 @@ async function generateWeatherForecast() {
     const forecastElement = document.querySelector("#forecast");
     forecastElement.innerHTML = "";
 
+    const hourlyButton = document.querySelector(".hourly");
+    hourlyButton.textContent = "Show hourly";
+
     const weatherSearchElement = document.querySelector("#main-content");
     weatherSearchElement.style.height = "auto";
     weatherSearchElement.style.margin = "0";
@@ -215,9 +218,7 @@ function openWindows(event) {
     const button = event.target;
     const gif = document.querySelector(".gif");
     
-    //if (gif.style.display === "block") gif.style.display = "none";
-     gif.style.display = "block";
-
+    gif.style.display = "block";
 
     const windowLeft = document.querySelector(".window-left");  
     const windowRight = document.querySelector(".window-right");
