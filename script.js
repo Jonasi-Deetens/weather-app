@@ -60,7 +60,7 @@ async function generateWeatherForecast() {
     forecastElement.innerHTML = "";
 
     const weatherSearchElement = document.querySelector("#main-content");
-    weatherSearchElement.style.height = "200px";
+    weatherSearchElement.style.height = "auto";
     weatherSearchElement.style.margin = "0";
     weatherSearchElement.style.borderBottom = "3px solid black";
     document.querySelector(".weather-section-current-front").children[0].prepend(weatherSearchElement);
@@ -75,9 +75,9 @@ async function generateWeatherForecast() {
     if (weatherData.current.is_day) document.body.style.backgroundImage = "url(" + weatherDescriptions[weatherData.daily.weather_code[0]].day.background + ")";
     else document.body.style.backgroundImage = "url(" +  weatherDescriptions[weatherData.daily.weather_code[0]].night.background + ")";
 
-    //CREATE TITEL SECTION
+    //CHANGE TITEL SECTION
     const cityTitelElement = document.querySelector(".weather-title");
-    cityTitelElement.textContent = geoData.name;
+    cityTitelElement.textContent = geoData.name + ", " + geoData.country;
     cityTitelElement.classList.add("dark-title");
 
     //CREATE FRONTSIDE CURRENT WEATHER
