@@ -186,6 +186,11 @@ img {
     padding: 10px;
 }
 
+.weather-section-content p {
+    padding: 0;
+    margin: 0;
+}
+
 .weather-section-current-back {
     background-color: rgba(0, 0, 0, 0.50);
     color: white;
