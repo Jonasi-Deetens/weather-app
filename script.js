@@ -1,5 +1,5 @@
 import { weatherDescriptions } from "./weatherDescriptions.js";
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"];
 const geoAPI = "https://geocoding-api.open-meteo.com/v1/search?name=";
 
@@ -144,7 +144,7 @@ async function generateWeatherForecast() {
         div.classList.add("flex-col");
 
         const h2Element = document.createElement("h2");
-        h2Element.textContent = days[day] + " " + time[2] + " " + months[time[1]-1];
+        h2Element.textContent = weekdays[day] + " " + time[2] + " " + months[time[1]-1];
         div.appendChild(h2Element);
 
         const pElementDay = document.createElement("p");
@@ -208,6 +208,7 @@ function createHourlyForecast(startIndex, day, weatherData) {
 
 function openWindows(event) {
     const button = event.target;
+
     if (button.textContent === "Open windows") button.textContent = "Close windows";
     else button.textContent = "Open windows";
 

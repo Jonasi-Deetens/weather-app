@@ -236,12 +236,22 @@ img {
 
 .window-left {
     position: absolute;
+    flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
     left: 0;
     width: 50%;
     transition: left 1s linear;
+}
+
+.window-left-info {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    font-size: x-large;
+    filter: drop-shadow(0 0 5px white);
+    opacity: 0.6;
 }
 
 .window-right {
