@@ -132,6 +132,12 @@ img {
     overflow: auto;
 }
 
+.phone {
+    display: none;
+    position: static !important;
+    width: 100% !important;
+}
+
 .small {
     width: 50px;
     height: 50px;
@@ -266,8 +272,12 @@ img {
         min-width: 33.33%
     }
 
-    .hourly, .open {
+    .open {
         display: none;
+    }
+
+    .phone {
+        display: block;
     }
 }
 

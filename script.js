@@ -108,19 +108,24 @@ async function generateWeatherForecast() {
     minTempElement.textContent = "Min: " + weatherData.daily.temperature_2m_min[0] + weatherData.daily_units.temperature_2m_min;
 
     //CREATE BACKSIDE CURRENT WEATHER
-    const windowGlassElement = document.querySelector(".window-right");
-    const currentForecastBackElement = document.createElement("div");
-    currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
+    const hourlyDiv = document.createElement("div");
+    hourlyDiv.classList.add("window-glas", "window-right", "phone");
+    forecastElement.appendChild(hourlyDiv);
 
-    const h2ElementBack = document.createElement("h2");
-    h2ElementBack.textContent = "Hourly forecast";
-    currentForecastBackElement.appendChild(h2ElementBack);
+    const windowGlassElements = document.querySelectorAll(".window-right");
 
-    const flexElement = createHourlyForecast(hour, 0, weatherData);
-    currentForecastBackElement.appendChild(flexElement);
+    windowGlassElements.forEach(element => {
+        const currentForecastBackElement = document.createElement("div");
+        currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
 
-    windowGlassElement.innerHTML = "";
-    windowGlassElement.appendChild(currentForecastBackElement);
+        const h2ElementBack = document.createElement("h2");
+        h2ElementBack.textContent = "Hourly forecast";
+        currentForecastBackElement.appendChild(h2ElementBack);
+
+        const flexElement = createHourlyForecast(hour, 0, weatherData);
+        currentForecastBackElement.appendChild(flexElement);
+        element.appendChild(currentForecastBackElement);
+    })
     
     //CREATE 7 day forecast
     for (let index = 1; index < 7; index++) {
@@ -220,13 +225,15 @@ function openWindows(event) {
 
 function showHourlyForecast(event) {
     const button = event.target;
-    const backSection = document.querySelector(".weather-section-current-back");
+    const backSections = document.querySelectorAll(".weather-section-current-back");
     
-    if (backSection.classList.contains("hidden")) {
-        backSection.classList.remove("hidden");
-        button.textContent = "Hide hourly";
-    } else {
-        backSection.classList.add("hidden");
-        button.textContent = "Show hourly";
-    }
+    backSections.forEach(backSection => {
+        if (backSection.classList.contains("hidden")) {
+            backSection.classList.remove("hidden");
+            button.textContent = "Hide hourly";
+        } else {
+            backSection.classList.add("hidden");
+            button.textContent = "Show hourly";
+        }
+    });
 }
