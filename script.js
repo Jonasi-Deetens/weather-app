@@ -119,6 +119,7 @@ async function generateWeatherForecast() {
     const windowGlassElements = document.querySelectorAll(".window-right");
 
     windowGlassElements.forEach(element => {
+        element.innerHTML = "";
         const currentForecastBackElement = document.createElement("div");
         currentForecastBackElement.classList.add("weather-section-current-back", "hidden");
 
